@@ -100,3 +100,6 @@ Chart.jsなどのライブラリを使用して、円グラフや棒グラフを
 
 画面遷移図
 https://www.figma.com/design/NCKfukUBeTHkZwC6Hq8kpN/Untitled?node-id=0-1&t=WpgGsCOPPSJ7mc8c-1
+
+ER図
+https://dbdiagram.io/d/6635fb645b24a634d07d499a
