@@ -97,3 +97,6 @@ Chart.jsなどのライブラリを使用して、円グラフや棒グラフを
 使用するGem: sorcery
 ユーザーの登録、ログイン、パスワード管理などの認証機能を実装します。
 ソーシャルログインが必要な場合、sorcery-externalを使用してFacebookやGoogleなどのOAuth認証を統合します。
+
+画面遷移図
+https://www.figma.com/design/NCKfukUBeTHkZwC6Hq8kpN/Untitled?node-id=0-1&t=WpgGsCOPPSJ7mc8c-1
