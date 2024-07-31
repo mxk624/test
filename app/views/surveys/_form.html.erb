@@ -1,23 +1,23 @@
 <%= form_with model: @survey, local: true do |f| %>
   <div class="form-group">
-    <%= f.label :body_parts, "あなたの肌悩みの該当部位を教えて下さい。", class: "form-label" %>
-    <%= f.collection_select(:body_part_ids, @body_parts, :id, :name, {}, { class: "form-control" }) %>
+    <%= f.label :body_part_id, "あなたの肌悩みの該当部位を教えて下さい。", class: "form-label" %>
+    <%= f.collection_select(:body_part_id, @body_parts, :id, :name, {}, { class: "form-control" }) %>
   </div>
   <div class="form-group">
-    <%= f.label :skin_concerns, "あなたの肌悩みを教えて下さい。", class: "form-label" %>
-    <%= f.collection_select(:skin_concern_ids, @skin_concerns, :id, :concern, {}, { class: "form-control" }) %>
+    <%= f.label :skin_concern_id, "あなたの肌悩みを教えて下さい。", class: "form-label" %>
+    <%= f.collection_select(:skin_concern_id, @skin_concerns, :id, :concern, {}, { class: "form-control" }) %>
   </div>
   <div class="form-group">
-    <%= f.label :environments, "日常的にどのような環境にいますか？", class: "form-label" %>
-    <%= f.collection_select(:environment_ids, @environments, :id, :environment_type, {}, { class: "form-control" }) %>
+    <%= f.label :environment_id, "日常的にどのような環境にいますか？", class: "form-label" %>
+    <%= f.collection_select(:environment_id, @environments, :id, :environment_type, {}, { class: "form-control" }) %>
   </div>
   <div class="form-group">
-    <%= f.label :skin_types, "あなたの肌質はどのタイプですか？", class: "form-label" %>
-    <%= f.collection_select(:skin_type_ids, @skin_types, :id, :skin_type_name, {}, { class: "form-control" }) %>
+    <%= f.label :skin_type_id, "あなたの肌質はどのタイプですか？", class: "form-label" %>
+    <%= f.collection_select(:skin_type_id, @skin_types, :id, :skin_type_name, {}, { class: "form-control" }) %>
   </div>
   <div class="form-group">
-    <%= f.label :skincare_types, "使用しているスキンケア製品はありますか？", class: "form-label" %>
-    <%= f.collection_select(:skincare_type_ids, @skincare_types, :id, :skincare_type_name, {}, { class: "form-control" }) %>
+    <%= f.label :skincare_type_id, "使用しているスキンケア製品はありますか？", class: "form-label" %>
+    <%= f.collection_select(:skincare_type_id, @skincare_types, :id, :skincare_type_name, {}, { class: "form-control" }) %>
   </div>
   <div class="form-group text-center">
     <%= f.submit '結果を見る', class: "btn btn-primary" %>

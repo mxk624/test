@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_07_27_083956) do
+ActiveRecord::Schema[7.1].define(version: 2024_07_30_141750) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -98,4 +98,15 @@ ActiveRecord::Schema[7.1].define(version: 2024_07_27_083956) do
     t.index ["email"], name: "index_users_on_email", unique: true
   end
 
+  add_foreign_key "survey_body_parts", "body_parts"
+  add_foreign_key "survey_body_parts", "surveys"
+  add_foreign_key "survey_environments", "environments"
+  add_foreign_key "survey_environments", "surveys"
+  add_foreign_key "survey_skin_concerns", "skin_concerns"
+  add_foreign_key "survey_skin_concerns", "surveys"
+  add_foreign_key "survey_skin_types", "skin_types"
+  add_foreign_key "survey_skin_types", "surveys"
+  add_foreign_key "survey_skincare_types", "skincare_types"
+  add_foreign_key "survey_skincare_types", "surveys"
+  add_foreign_key "surveys", "users"
 end
