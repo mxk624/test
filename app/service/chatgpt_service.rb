@@ -22,7 +22,7 @@ class ChatgptService
       model: @model,
       messages: [{ role: 'user', content: @message }]
     }
-    response = HTTParty.post(@api_url, body: body.to_json, headers: @options[:headers], timeout: 100)
+    response = HTTParty.post(@api_url, body: body.to_json, headers: @options[:headers], timeout: 300)
     raise response['error']['message'] unless response.code == 200
 	# レスポンスはjson形式のため、下記の形で返答本文"content"のみを抽出する
     response['choices'][0]['message']['content']
