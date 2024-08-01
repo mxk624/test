@@ -21,7 +21,7 @@ class SurveysController < ApplicationController
 
       @survey.update(result: @result)
 
-      redirect_to @survey, notice: '問診票が正常に作成されました。'
+      redirect_to survey_path(@survey), notice: '問診票が正常に作成されました。'
     else
       # 保存に失敗した場合の処理
       load_form_data
@@ -90,5 +90,30 @@ class SurveysController < ApplicationController
       ・ダウンタイムは？
       【ダウンタイム内容】
     MESSAGE
+  end
+end
+
+
+def create
+  @fraud_report = FraudReport.new(fraud_report_params)
+  prompt = scam_name_general_prompt(params[:fraud_report]) # promptには受け取ったカラムの値を入れたプロンプトが入る
+      response = ChatgptService.call(prompt)
+  # 保存先をrespondカラムに指定
+      @fraud_report.respond = response
+      # 詐欺診断処理を行って詐欺情報を確定させる
+          judgmented_scam = handle_scam_diagnosis(response)
+      # FraudReport関連するscamレコードを取得
+          @fraud_report.scam = judgmented_scam
+
+  begin # エラーが出そうな部分を指定。
+          if @fraud_report.save
+              redirect_to fraud_report_path(@fraud_report), notice: '診断結果が出ました'
+          else
+              logger.error "Failed to save fraud_report: #{@fraud_report.errors.full_messages.join(', ')}"
+              redirect_to root_path, alert: '保存に失敗しました。'
+          end
+      rescue Net::ReadTimeout, StandardError => e # beginの箇所で失敗した場合のエラーをキャッチして処理
+      logger.error "Failed to call OpenAI: #{e.message}"
+      redirect_to root_path, alert: 'OpenAIサービスの呼び出しに失敗しました。'
   end
 end
