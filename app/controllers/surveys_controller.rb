@@ -5,6 +5,7 @@ class SurveysController < ApplicationController
   end
 
   def create
+    # ログイン画面作成後にcurrent_userに変更する
     @survey = Survey.new(user_id: 1, result: '暫定結果')
     if @survey.save
       create_associations(@survey, survey_params)
