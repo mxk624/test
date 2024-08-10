@@ -22,3 +22,11 @@ end
 ["クレンジング", "洗顔", "化粧水", "美容液", "乳液・クリーム", "日焼け止め", "全て使用している", "何も使っていない"].each do |skincare_type_name|
   SkincareType.find_or_create_by!(skincare_type_name: skincare_type_name)
 end
+
+# 仮ユーザーを作成
+User.find_or_create_by!(id: 1) do |user|
+  user.name = "Example User"
+  user.email = "user@example.com"
+  user.password = "password"
+  user.password_confirmation = "password"
+end
